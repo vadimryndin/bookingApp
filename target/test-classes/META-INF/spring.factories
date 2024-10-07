@@ -1,0 +1,2 @@
+org.springframework.test.context.TestExecutionListener=\
+pl.coherentsolutions.bookingapp.listener.ResetMocksTestExecutionListener
