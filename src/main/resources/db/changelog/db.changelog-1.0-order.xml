@@ -1,0 +1,41 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="author">
+        <createTable tableName="orders">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="booking_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="apartment_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_price" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="order_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint
+                baseTableName="orders"
+                baseColumnNames="booking_id"
+                constraintName="fk_order_booking"
+                referencedTableName="bookings"
+                referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint
+                baseTableName="orders"
+                baseColumnNames="apartment_id"
+                constraintName="fk_order_apartment"
+                referencedTableName="apartments"
+                referencedColumnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>
